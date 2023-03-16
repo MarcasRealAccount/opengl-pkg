@@ -10,6 +10,6 @@ filter("system:windows")
 	links({ "opengl32.lib" })
 
 filter("system:macosx")
-	frameworks({ "OpenGL.framework" })
+	links({ "OpenGL.framework" })
 
 filter({})
