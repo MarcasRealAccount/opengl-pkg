@@ -32,7 +32,7 @@ local function DownloadGLSpec()
 	print("Downloading GL Spec file")
 	local response, code = http.download("https://raw.githubusercontent.com/KhronosGroup/OpenGL-Registry/main/xml/gl.xml", filepath, { progress = DownloadProgress })
 	if code ~= 200 then
-		print("\rFailed to download GL Spec file")
+		print(string.format("\rFailed to download GL Spec file (%s, %d)", response, code))
 	else
 		print("\rDownload completed")
 	end
