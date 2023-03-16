@@ -23,13 +23,18 @@ local function DownloadProgress(total, current)
 end
 
 local function DownloadGLSpec()
-	local filepath = string.format("%s/generated/gl.xml", common:scriptDir())
+	local dir = string.format("%s/generated/", common:scriptDir())
+	if not os.isdir(dir) then
+		common:mkdir(dir)
+	end
+
+	local filepath = dir .. "gl.xml"
 	if os.isfile(filepath) then
 		return
 	end
 
 	firstPrint = true
-	print(string.format("Downloading GL Spec file into file %s", filepath))
+	print("Downloading GL Spec file")
 	local response, code = http.download("https://raw.githubusercontent.com/KhronosGroup/OpenGL-Registry/main/xml/gl.xml", filepath, { progress = DownloadProgress })
 	if code ~= 200 then
 		print(string.format("\rFailed to download GL Spec file (%s, %d)", response, code))
