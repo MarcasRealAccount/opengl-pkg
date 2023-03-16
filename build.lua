@@ -15,10 +15,10 @@ local function DownloadProgress(total, current)
 	ratio = math.min(math.max(ratio, 0), 1)
 	local percent = math.floor(ratio * 100)
 	if firstPrint then
-		io.write(string.format("Download progress (%d%%/100%%)", percent))
+		io.write(string.format("Download progress (%d%%/100%%)               ", percent))
 		firstPrint = false
 	else
-		io.write(string.format("\rDownload progress (%d%%/100%%)", percent))
+		io.write(string.format("\rDownload progress (%d%%/100%%)               ", percent))
 	end
 end
 
@@ -37,9 +37,9 @@ local function DownloadGLSpec()
 	print("Downloading GL Spec file")
 	local response, code = http.download("https://raw.githubusercontent.com/KhronosGroup/OpenGL-Registry/main/xml/gl.xml", filepath, { progress = DownloadProgress })
 	if code ~= 200 then
-		print(string.format("\rFailed to download GL Spec file (%s, %d)", response, code))
+		print(string.format("\rFailed to download GL Spec file (%s, %d)               ", response, code))
 	else
-		print("\rDownload completed")
+		print("\rDownload completed                                             ")
 	end
 end
 
